@@ -18,7 +18,12 @@ A aplicação já tem implementada a funcionalidade de **exibição** dos regist
 
 1. Instalar o MySql.
 2. Fazer o restore do banco de dados "**processoseletivo**" no MySql a partir do seu arquivo de dump ([dump-processoseletivo.sql](dump-processoseletivo.sql)).
-2. Instalar o Vue:
+   
+3. Instalar o Visual Studio:
+
+   a. Cargas de trabalho ("workloads") "ASP.NET and web development" e "Node.js development"
+   
+2. Instalar o Vue (*instruções para máquina Windows, para outros SO's siga a documentação do produto*):
 
    a. instalar nvm, para instalação do npm e node.js (prereqs para Vue): [https://github.com/coreybutler/nvm-windows/releases](https://github.com/coreybutler/nvm-windows/releases)
    
@@ -32,22 +37,28 @@ A aplicação já tem implementada a funcionalidade de **exibição** dos regist
       - `npm install -g vue@^2`
       - `npm install -g @vue/cli`
       - `npm install -g @vue/cli-service`
-   
-3. Instalar o Visual Studio:
-
-   a. Cargas de trabalho ("workloads") "ASP.NET and web development" e "Node.js development"
   
-4. Clonar este repositório no Visual Studio.
+4. Preparar o projeto para execução:
+
+   a. Clonar este repositório no Visual Studio
+      - Local do repositório: **https://github.com/gbhepta/processo-seletivo**
+   
+   b. Instalar npm packages no projeto front-end: 
+      - Gerenciador de Soluções > processo-seletivo-front > npm > botão direito >  "Instalar os Pacotes de npm"
+      - Esperar final da instalação na janela de Saída, "mostrar saída de:" > Npm
+   
+   c. Alterar a credencial usada para acesso ao banco no MySql. A string de conexão está no local padrão de geração do Entity Framework (arquivo de contexto na pasta Models do projeto da API).
+   
+   d. Reiniciar o Visual Studio.
 
 ## Testando o ambiente de desenvolvimento
 
-1. Alterar a credencial usada para acesso ao banco no MySql. A string de conexão está no local padrão de geração do Entity Framework (arquivo de contexto na pasta Models do projeto da API).
-2. Executar ("Start Without Debugging") o projeto da API. Usar a interface Swagger para executar os endpoints `/api/Status/servidorweb` e `/api/Status/bancodados`. O retorno de ambos deve ser HTTP 200 ("API operacional" e "BD operacional"). Algumas sugestões em caso de erro: 
+1. Executar ("Start Without Debugging") o projeto da API. Usar a interface Swagger para executar os endpoints `/api/Status/servidorweb` e `/api/Status/bancodados`. O retorno de ambos deve ser HTTP 200 ("API operacional" e "BD operacional"). Algumas sugestões em caso de erro: 
    - credenciais de acesso ao MySql estão corretas?
    - nome do banco de dados está correto? ("*processoseletivo*")
    - o restore foi feito no banco correto?
    - se o MySql está remoto (não está em localhost) o usuário sendo usado para acesso ao banco deve ser configurado para acesso remoto.
-3. Executar ("Start Without Debugging") o projeto do front-end. A tela inicial "Funcionários" deve ser mostrada, listando os registros cadstrados em banco.
+1. Executar ("Start Without Debugging") o projeto do front-end. A tela inicial "Funcionários" deve ser mostrada, listando os registros cadastrados em banco.
 
 ## O que fazer agora
 
